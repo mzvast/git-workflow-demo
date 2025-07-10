@@ -28,6 +28,7 @@ jobs:
           filter-creator-authority: none
           filter-head-ref: 'main, stable, stable-merge-main'
           filter-support-fork: false
+          skip-run-names: 'pr-check-ci'
           conflict-review-body: 😅 This branch has conflicts that must be resolved!
           success-review: true
           success-merge: true
