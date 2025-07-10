@@ -38,7 +38,7 @@ jobs:
           title: 'Merge stable into main'
           body: |
             This pull request was created automatically by GitHub Actions.
-            It merges the latest release from `stable` into `main`.
+            It merges the latest release from `stable` into `main` again.
           branch: 'stable-merge-main'
           base: 'main'
           labels: 'BranchAutoMerge'
