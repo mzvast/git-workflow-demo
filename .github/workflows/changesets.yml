@@ -21,14 +21,25 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+          fetch-depth: 0 # Use full git history to enable tagging
+      - name: Reset branch
+        run: |
+          git fetch origin stable
+          git reset --hard origin/stable
+
       - name: Create or update Pull Request to stable
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "chore: sync stable → main"
-          title: "Merge stable into main"
+          commit-message: 'chore: sync stable → main'
+          title: 'Merge stable into main'
           body: |
             This pull request was created automatically by GitHub Actions.
-            It merges the latest release from `stable` into `main`.
-          branch: "stable-merge-main"
-          base: "main"
-          labels: "BranchAutoMerge"
+            It merges the latest release from `stable` into `main` again.
+          branch: 'stable-merge-main'
+          base: 'main'
+          labels: 'BranchAutoMerge'
+          delete-branch: true
