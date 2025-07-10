@@ -24,10 +24,12 @@ jobs:
       - name: Checkout code repository
         uses: actions/checkout@v4
         with:
-          ref: 'stable'
+          ref: 'stable-merge-main'
           fetch-depth: 0 # Use full git history to enable tagging
-      - name: Unshallow fetch
-        run: git fetch --prune --unshallow
+      - name: Reset branch
+        run: |
+          git fetch origin stable:stable
+          git reset --hard stable
 
       - name: Create or update Pull Request to stable
         uses: peter-evans/create-pull-request@v7
