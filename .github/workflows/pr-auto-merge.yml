@@ -2,9 +2,8 @@
 name: PR Auto Merge Bot
 
 on:
-  workflow_dispatch:
-#   schedule:
-#     - cron: '*/5 * * * *'
+  schedule:
+    - cron: '* * * * *'
 
 permissions:
   checks: read # for actions-cool/check-pr-ci to get check reference
