@@ -3,7 +3,7 @@ name: PR Auto Merge Bot
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/5 * * * *'
 
 permissions:
   checks: read # for actions-cool/check-pr-ci to get check reference
