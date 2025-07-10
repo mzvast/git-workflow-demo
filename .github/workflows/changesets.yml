@@ -26,6 +26,9 @@ jobs:
         with:
           ref: 'stable'
           fetch-depth: 0 # Use full git history to enable tagging
+      - name: Unshallow fetch
+        run: git fetch --prune --unshallow
+
       - name: Create or update Pull Request to stable
         uses: peter-evans/create-pull-request@v7
         with:
