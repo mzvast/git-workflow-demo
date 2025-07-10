@@ -37,3 +37,4 @@ jobs:
           branch: 'stable-merge-main'
           base: 'main'
           labels: 'BranchAutoMerge'
+          delete-branch: true
