@@ -1,0 +1,34 @@
+name: Changesets
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  packages: write
+
+on:
+  push:
+    branches:
+      - stable
+
+env:
+  CI: true
+  SKIP_SIMPLE_GIT_HOOKS: 1
+
+jobs:
+  version:
+    if: github.repository == 'mzvast/git-workflow-demo'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create or update Pull Request to stable
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: sync stable → main"
+          title: "Merge stable into main"
+          body: |
+            This pull request was created automatically by GitHub Actions.
+            It merges the latest release from `stable` into `main`.
+          branch: "stable-merge-main"
+          base: "main"
+          labels: "BranchAutoMerge"
