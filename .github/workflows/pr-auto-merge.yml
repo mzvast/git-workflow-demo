@@ -6,7 +6,10 @@ on:
     - cron: '*/5 * * * *'
 
 permissions:
-  contents: read
+  checks: read # for actions-cool/check-pr-ci to get check reference
+  contents: write # for actions-cool/check-pr-ci to merge PRs
+  issues: write # for actions-cool/check-pr-ci to update issues
+  pull-requests: write # for actions-cool/check-pr-ci to update PRs
 
 jobs:
   pr-check-ci:
