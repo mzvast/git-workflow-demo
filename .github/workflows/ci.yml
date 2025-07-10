@@ -7,4 +7,20 @@ jobs:
   dummy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "ok"
+      - name: Dummy CI
+        run: echo "oko"
+
+      - name: Report legacy status
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: 'success',
+              context: 'ci/github-actions',      
+              description: 'Dummy CI passed',      
+              target_url: `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`
+            });
