@@ -36,6 +36,8 @@ jobs:
         with:
           commit-message: 'chore: sync stable → main'
           title: 'Merge stable into main'
+          token: ${{ secrets.PAT_TOKEN }}
+          # reviewers: 'mzvast'
           body: |
             This pull request was created automatically by GitHub Actions.
             It merges the latest release from `stable` into `main` again.
