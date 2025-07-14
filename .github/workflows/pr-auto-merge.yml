@@ -24,7 +24,7 @@ jobs:
       - uses: actions-cool/check-pr-ci@v1
         with:
           filter-label: BranchAutoMerge
-          filter-creator-authority: none
+          filter-creator-authority: write
           filter-head-ref: 'main, stable, stable-merge-main'
           filter-support-fork: false
           skip-run-names: 'pr-check-ci'
