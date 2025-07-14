@@ -20,6 +20,28 @@ jobs:
     if: github.repository == 'mzvast/git-workflow-demo'
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    outputs:
+      published: ${{ steps.manual-publish.outputs.published }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Manual publish simulation
+        id: manual-publish
+        run: |
+          # 这里替换实际的发布命令
+          echo "Simulating publish..."
+          echo "published=true" >> $GITHUB_OUTPUT
+
+  sync_main:
+    if: needs.version.outputs.published == 'true'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    name: Sync stable to main
+    needs: version
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v4
